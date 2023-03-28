@@ -3,10 +3,11 @@ package vehiculos;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Pais {
     private String nombre;
     private int unidadesVendidas;
-    private static Map<String, Integer> ventasPorPais=new HashMap<>(); // mapa de ventas por pais
+    static Map<Pais, Integer> ventasPorPais=new HashMap <Pais, Integer>(); // mapa de ventas por pais
 
     public Pais(String nombre) {
         this.nombre = nombre;
@@ -24,20 +25,16 @@ public class Pais {
         return unidadesVendidas;
     }
 
-    public static void registrarVenta(String país) {
-        ventasPorPais.put(país, ventasPorPais.getOrDefault(país, 0) + 1); // registrar venta para el país
-    }
-
-    public static String paisMasVendedor() {
-        String paísMasVendedor = null;
-        int unidadesVendidas = 0;
-        for (Map.Entry<String, Integer> venta : ventasPorPais.entrySet()) {
-            if (venta.getValue() > unidadesVendidas) {
-                unidadesVendidas = venta.getValue();
-                paísMasVendedor = venta.getKey();
+    public static Pais paisMasVendedor() {
+        Pais paisMasVendedor = null;
+        int unidadesVendidas = -1;
+        for (Map.Entry<Pais, Integer> entry : ventasPorPais.entrySet()) {
+            if (entry.getValue() > unidadesVendidas) {
+                unidadesVendidas = entry.getValue();
+                paisMasVendedor = entry.getKey();
             }
         }
-        return paísMasVendedor;
+        return paisMasVendedor;
     }
 }
 

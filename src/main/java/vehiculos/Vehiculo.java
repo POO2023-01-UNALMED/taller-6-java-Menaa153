@@ -20,8 +20,22 @@ public class Vehiculo {
         this.peso = peso;
         this.traccion = traccion;
         this.fabricante = fabricante;
+
+        if (Fabricante.ventasPorFabricante.containsKey(fabricante)) {
+            Fabricante.ventasPorFabricante.put(fabricante, Fabricante.ventasPorFabricante.get(fabricante) + 1); //registrar venta por fabricante
+        } else {
+            Fabricante.ventasPorFabricante.put(fabricante, 1);
+        }
+
+        if (Pais.ventasPorPais.containsKey(fabricante.getPais())) {
+            Pais.ventasPorPais.put(fabricante.getPais(), Pais.ventasPorPais.get(fabricante.getPais()) + 1); // registrar venta para el pais
+        } else {
+            Pais.ventasPorPais.put(fabricante.getPais(), 1);
+        }
+
         cantidadVehiculos++;
     }
+
 
     public String getPlaca() {
         return placa;
