@@ -91,23 +91,13 @@ public class Vehiculo {
         return cantidadVehiculos;
     }
 
+    public void setCantidadVehiculos(int cantidadVehiculos){
+        Vehiculo.cantidadVehiculos=cantidadVehiculos;
+    }
+
     public static String vehiculosPorTipo() {
-        int cantidadAutomoviles = 0;
-        int cantidadCamionetas = 0;
-        int cantidadCamiones = 0;
-
-        for (Vehiculo vehiculo : vehiculos) {
-            if (vehiculo instanceof Automóvil) {
-                cantidadAutomoviles++;
-            } else if (vehiculo instanceof Camioneta) {
-                cantidadCamionetas++;
-            } else if (vehiculo instanceof Camion) {
-                cantidadCamiones++;
-            }
-        }
-
-        return "Automóviles: " + cantidadAutomoviles + "\n" +
-                "Camionetas: " + cantidadCamionetas + "\n" +
-                "Camiones: " + cantidadCamiones;
+        return "Automoviles: " + Automovil.getCantidadAutomoviles() + "\n" +
+                "Camionetas: " + Camioneta.getCantidadCamionetas() + "\n" +
+                "Camiones: " + Camion.getCantidadCamiones();
     }
 }
